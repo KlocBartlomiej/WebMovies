@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around; /* Możesz użyć space-between lub space-around */
+    align-items: center; /* Wyśrodkowanie w pionie */
+    margin-bottom: 20px;
+    background-color: black; /* Czarny kolor tła */
+    padding: 10px; /* Dodaj padding */
+}
+
+.navbar div {
+    margin: 0 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white; /* Zmiana koloru tekstu na biały */
+}
+
+.add-movie-button {
+    background-color: red; /* Czerwony kolor tła */
+    color: white; /* Kolor tekstu na biały */
+    border: none; /* Bez ramki */
+    padding: 10px 20px; /* Padding wewnętrzny */
+    cursor: pointer; /* Kursor wskazujący */
+    font-weight: bold; /* Pogrubiony tekst */
+    border-radius: 5px; /* Zaokrąglone rogi */
+}
+
+.add-movie-button:hover {
+    background-color: darkred; /* Ciemniejszy czerwony przy najeździe */
+}
+
+.category {
+    margin: 20px 0;
+}
+
+.movie {
+    background: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie img {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+.comments {
+    margin-top: 10px;
+}
+
+.add-movie-form {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
