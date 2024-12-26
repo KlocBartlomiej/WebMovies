@@ -1,2 +1,3 @@
 <?php
-    require_once('view/index.view.php');
+    require_once('functions.php');
+    require_once('controllers/index.php');
