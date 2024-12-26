@@ -1,2 +1,2 @@
 <?php
-    require_once('view/index.view.php');
+    require 'view/index.view.php';

@@ -1,3 +1,3 @@
 <?php
-    require_once('functions.php');
-    require_once('controllers/index.php');
+    require 'functions.php';
+    require 'router/router.php';
