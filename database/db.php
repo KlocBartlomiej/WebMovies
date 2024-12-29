@@ -27,6 +27,7 @@ class Db{
     }
 
     private function createUsersTable() {
+        // TODO: unique key, login in user etc
         // Tworzymy tabelę jeśli jeszcze nie została stworzona
         $this->connection->query('CREATE TABLE IF NOT EXISTS "uzytkownicy" (
             "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,

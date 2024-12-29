@@ -1,17 +1,3 @@
-<body>
-        <h1>Lista Filmów</h1>
-
-        <div class="navbar">
-            <div onclick="toggleCategory('action')">Filmy Akcji</div>
-            <div onclick="toggleCategory('drama')">Dramaty</div>
-            <div onclick="toggleCategory('comedy')">Komedia</div>
-            <div onclick="toggleCategory('horror')">Horror</div>
-            <div onclick="toggleCategory('thriller')">Thriller</div>
-            <div onclick="toggleCategory('sci-fi')">Science Fiction</div>
-            <div onclick="toggleCategory('animation')">Animacja</div>
-            <button class="add-movie-button" onclick="openAddMovieModal()">Dodaj Film</button>
-        </div>
-
         <div class="search-form">
             <input type="text" id="search-title" placeholder="Szukaj po tytule">
             <input type="text" id="search-year" placeholder="Szukaj po roku">
