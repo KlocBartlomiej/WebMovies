@@ -5,3 +5,4 @@
     <script src="script.js"></script>
     </body>
 </html>
+<?php dd($filmy); ?>

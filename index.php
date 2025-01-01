@@ -1,4 +1,5 @@
 <?php
-    require 'functions.php';
-    require 'database/connect.php';
-    require 'router/router.php';
+
+require 'functions.php';
+$db = require 'database/connect.php';
+require 'router/router.php';
