@@ -5,7 +5,8 @@ class Db{
 
     public function __construct() {
         try{
-            $this->connection = new PDO("sqlite:database/filmyDatabase.sqlite");
+            $this->connection = new PDO("sqlite:file:database/filmyDatabase.sqlite");
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch( PDOException $Exception ) {
             echo 'Nie można połączyć się z bazą danych' . $Exception->getMessage() . ' , ' . $Exception->getCode( );
@@ -49,7 +50,7 @@ class Db{
     }
 
     public function __destruct() {
-        $this->connection->close();
+        $this->connection = null;
     }
 
     public function populateTestData() {
@@ -82,6 +83,21 @@ class Db{
 
     public function executeSelectQuery($query) {
         return $this->connection->query($query)->fetchAll();
+    }
+
+    public function addMovie($post, $category) {
+        $insert = 'INSERT INTO  filmy ("tytul", "opis", "url", "rok_produkcji", "kategoria", "data_dodania")
+            VALUES (:tytul, :opis, :url, :rok_produkcji, :kategoria, :data_dodania)';
+        $data = [
+            "tytul" => $post['title'],
+            "opis" => $post['description'],
+            "url" => $post['url'],
+            "rok_produkcji" => $post['year'],
+            "kategoria" => $category,
+            "data_dodania" => date('Y-m-d H:i:s'),
+        ];
+        $statement = $this->connection->prepare($insert);
+        return $statement->execute($data);
     }
 }
 

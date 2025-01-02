@@ -16,3 +16,11 @@ function abort($code = 404){
         require "view/{$code}.php";
         die();
 }
+
+function addAndFetch($db, $category) {
+    if (isset($_POST['addMovie'])) {
+        $db->addMovie($_POST, $category);
+    }
+    
+    return $db->executeSelectQuery("SELECT * FROM filmy WHERE kategoria = '" . $category . "';");
+}

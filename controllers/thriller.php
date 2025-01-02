@@ -1,6 +1,6 @@
 <?php
 
 $category = 'Thriller';
-$filmy = $db->executeSelectQuery("SELECT * FROM filmy WHERE kategoria = '" . $category . "';");
+$filmy = addAndFetch($db, $category);
 
 require 'view/thriller.view.php';
