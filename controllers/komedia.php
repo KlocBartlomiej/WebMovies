@@ -1,8 +1,6 @@
 <?php
 
 $category = 'Komedia';
-
-$query = "SELECT * FROM filmy WHERE kategoria = '$category'";
-$filmy = $db->executeQuery($query);
+$filmy = $db->executeSelectQuery("SELECT * FROM filmy WHERE kategoria = '" . $category . "';");
 
 require 'view/komedia.view.php';

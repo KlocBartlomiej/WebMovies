@@ -1,12 +1,16 @@
 <?php
 
 class Db{
-    public $connection;
+    private $connection;
 
-    function __construct() {
-        // Tworzy baze, jeśli nie istnieje lub otwiera istniejącą do odczytu i zapisu
-        $this->connection = new SQLite3('database/filmyDatabase.sqlite', SQLITE3_OPEN_CREATE | SQLITE3_OPEN_READWRITE);
-        $this->connection->enableExceptions(true);
+    public function __construct() {
+        try{
+            $this->connection = new PDO("sqlite:database/filmyDatabase.sqlite");
+        }
+        catch( PDOException $Exception ) {
+            echo 'Nie można połączyć się z bazą danych' . $Exception->getMessage() . ' , ' . $Exception->getCode( );
+            die();
+        }
 
         $this->createMoviesTable();
         $this->createUsersTable();
@@ -14,51 +18,43 @@ class Db{
     }
 
     private function createMoviesTable() {
-        // Tworzymy tabelę jeśli jeszcze nie została stworzona
         $this->connection->query('CREATE TABLE IF NOT EXISTS "filmy" (
             "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            "tytul" VARCHAR,
+            "tytul" VARCHAR NOT NULL,
             "opis" VARCHAR,
             "url" VARCHAR,
             "rok_produkcji" INTEGER,
-            "kategoria" VARCHAR,
-            "data_dodania" DATETIME
+            "kategoria" VARCHAR NOT NULL,
+            "data_dodania" DATETIME NOT NULL
         )');
     }
 
     private function createUsersTable() {
-        // TODO: unique key, login in user etc
-        // Tworzymy tabelę jeśli jeszcze nie została stworzona
         $this->connection->query('CREATE TABLE IF NOT EXISTS "uzytkownicy" (
             "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            "login" VARCHAR,
-            "haslo" VARCHAR
+            "login" VARCHAR NOT NULL UNIQUE,
+            "haslo" VARCHAR NOT NULL
         )');
     }
 
     private function createCommentsTable() {
-        // Tworzymy tabelę jeśli jeszcze nie została stworzona
         $this->connection->query('CREATE TABLE IF NOT EXISTS "komentarze" (
             "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            "id_filmu" INTEGER,
-            "id_uzytkownika" INTEGER,
-            "komentarz" VARCHAR,
+            "id_filmu" INTEGER NOT NULL,
+            "id_uzytkownika" INTEGER NOT NULL,
+            "komentarz" VARCHAR NOT NULL,
             FOREIGN KEY(id_filmu) REFERENCES filmy(id),
             FOREIGN KEY(id_uzytkownika) REFERENCES uzytkownicy(id)
         )');
     }
 
-    function __destruct() {
-        // Zamykamy połączenie z bazą danych
+    public function __destruct() {
         $this->connection->close();
     }
 
     public function populateTestData() {
-        // Dodajemy dane testowe
-        // TODO: każdy z elementów dodaje się dwa razy
-        $this->connection->exec('BEGIN');
-        $this->connection->query('INSERT INTO filmy ("tytul", "opis", "url", "rok_produkcji", "kategoria", "data_dodania")
-            VALUES ("Obcy - ósmy pasażer Nostromo",
+        $this->connection->prepare('INSERT OR REPLACE INTO filmy ("id", "tytul", "opis", "url", "rok_produkcji", "kategoria", "data_dodania")
+            VALUES (1, "Obcy - ósmy pasażer Nostromo",
             "Załoga statku kosmicznego Nostromo (kapitan Dallas, Ash, Kane, Brett, Parker, Lambert, Ripley) zostaje obudzona 
             ze stanu hibernacji przez tajemniczy sygnał S.O.S. z pobliskiej planety. Podczas akcji ratunkowej natrafiają 
             na obcą formę życia. Jeden z członków załogi, Kane, zostaje przez nią zaatakowany. 
@@ -66,39 +62,26 @@ class Db{
             "",
             1979,
             "Horror",
-            "' . date('Y-m-d H:i:s') . '")');
-        $this->connection->query('INSERT INTO filmy ("tytul", "opis", "url", "rok_produkcji", "kategoria", "data_dodania")
-           VALUES ("Test",
+            "' . date('Y-m-d H:i:s') . '")')->execute();
+        $this->connection->prepare('INSERT OR REPLACE INTO filmy ("id", "tytul", "opis", "url", "rok_produkcji", "kategoria", "data_dodania")
+           VALUES (2, "Test",
            "Lorem ispum",
            "",
            2020,
            "Komedia",
-           "' . date('Y-m-d H:i:s') . '")');
-        $this->connection->query('INSERT INTO filmy ("tytul", "opis", "url", "rok_produkcji", "kategoria", "data_dodania")
-            VALUES ("Test2",
+           "' . date('Y-m-d H:i:s') . '")')->execute();
+        $this->connection->prepare('INSERT OR REPLACE INTO filmy ("id", "tytul", "opis", "url", "rok_produkcji", "kategoria", "data_dodania")
+            VALUES (3, "Test2",
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores et soluta illo molestiae ratione impedit 
             maiores voluptas hic veniam autem blanditiis, pariatur facilis explicabo nesciunt neque id ad magni rerum.",
             "",
             1999,
             "Horror",
-            "' . date('Y-m-d H:i:s') . '")');
-        $this->connection->exec('COMMIT');
+            "' . date('Y-m-d H:i:s') . '")')->execute();
     }
 
-    public function executeQuery($query) {
-    $statement = $this->connection->prepare($query);
-    // TODO: dodać $statement->bindValue(':id', $id); np. w wywołaniu funkcji dla każdego elementu tablicy, przekazanej jako drugi parametr
-    $results = $statement->execute();
-
-    $multiArray = [];
-    while($result = $results->fetchArray(SQLITE3_ASSOC)) {
-        $multiArray[] = $result;
-    }
-
-    // Trzeba zwolnić pamięć zapytania, gdy go już nie potrzebujemy
-    $results->finalize();
-
-    return $multiArray;
+    public function executeSelectQuery($query) {
+        return $this->connection->query($query)->fetchAll();
     }
 }
 
