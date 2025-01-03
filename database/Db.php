@@ -56,10 +56,7 @@ class Db{
     public function populateTestData() {
         $this->connection->prepare('INSERT OR REPLACE INTO filmy ("id", "tytul", "opis", "url", "rok_produkcji", "kategoria", "data_dodania")
             VALUES (1, "Obcy - ósmy pasażer Nostromo",
-            "Załoga statku kosmicznego Nostromo (kapitan Dallas, Ash, Kane, Brett, Parker, Lambert, Ripley) zostaje obudzona 
-            ze stanu hibernacji przez tajemniczy sygnał S.O.S. z pobliskiej planety. Podczas akcji ratunkowej natrafiają 
-            na obcą formę życia. Jeden z członków załogi, Kane, zostaje przez nią zaatakowany. 
-            Lambert i Dallas wnoszą go na pokład statku nie wiedząc, jak ogromny popełnili błąd. ",
+            "Załoga statku kosmicznego Nostromo (kapitan Dallas, Ash, Kane, Brett, Parker, Lambert, Ripley) zostaje obudzona ze stanu hibernacji przez tajemniczy sygnał S.O.S. z pobliskiej planety. Podczas akcji ratunkowej natrafiają na obcą formę życia. Jeden z członków załogi, Kane, zostaje przez nią zaatakowany. Lambert i Dallas wnoszą go na pokład statku nie wiedząc, jak ogromny popełnili błąd.",
             "",
             1979,
             "Horror",
@@ -73,8 +70,7 @@ class Db{
            "' . date('Y-m-d H:i:s') . '")')->execute();
         $this->connection->prepare('INSERT OR REPLACE INTO filmy ("id", "tytul", "opis", "url", "rok_produkcji", "kategoria", "data_dodania")
             VALUES (3, "Test2",
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores et soluta illo molestiae ratione impedit 
-            maiores voluptas hic veniam autem blanditiis, pariatur facilis explicabo nesciunt neque id ad magni rerum.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores et soluta illo molestiae ratione impedit maiores voluptas hic veniam autem blanditiis, pariatur facilis explicabo nesciunt neque id ad magni rerum.",
             "",
             1999,
             "Horror",

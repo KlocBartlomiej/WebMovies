@@ -1,6 +1,6 @@
 <?php
 
 $category = 'Sciencefiction';
-$filmy = addAndFetch($db, $category);
+$movies = addAndFetch($db, $category);
 
 require 'view/sciencefiction.view.php';

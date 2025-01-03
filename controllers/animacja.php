@@ -1,6 +1,6 @@
 <?php
 
 $category = 'Animacja';
-$filmy = $db->executeSelectQuery("SELECT * FROM filmy WHERE kategoria = '" . $category . "';");
+$movies = addAndFetch($db, $category);
 
 require 'view/animacja.view.php';
