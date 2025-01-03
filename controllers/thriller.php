@@ -1,6 +1,6 @@
 <?php
 
 $category = 'Thriller';
-$filmy = addAndFetch($db, $category);
+$movies = addAndFetch($db, $category);
 
 require 'view/thriller.view.php';

@@ -1,6 +1,6 @@
 <?php
 
 $category = 'Komedia';
-$filmy = addAndFetch($db, $category);
+$movies = addAndFetch($db, $category);
 
 require 'view/komedia.view.php';
