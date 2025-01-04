@@ -1,8 +1,7 @@
-        <div class="category" id="category">
-            <h2><?=$category?></h2>
-            <div class="movies" id="movies"></div>
-        </div>
+    <div class="movies" id="movies"></div>
+
     <script src="script.js"></script>
+
     <script type="text/javascript">
     (function(){
         let movies = [];
@@ -24,5 +23,6 @@
     movies.forEach(movie => displayMovie(movie));
     })();
     </script>
+
     </body>
 </html>
