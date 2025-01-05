@@ -9,4 +9,5 @@ return [
     '/thriller' => 'controllers/thriller.php',
     '/sciencefiction' => 'controllers/sciencefiction.php',
     '/animacja' => 'controllers/animacja.php',
+    'szczegoly' => 'controllers/movieDetails.php'
 ];

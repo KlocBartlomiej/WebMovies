@@ -17,6 +17,10 @@ function abort($code = 404){
         die();
 }
 
+function getMovie($db, $id) {
+    return $db->executeSelectQuery("SELECT * FROM filmy WHERE id = '" . $id . "';")[0];
+}
+
 function addAndFetch($db, $category) {
     if (isset($_POST['addMovie'])) {
         $db->addMovie($_POST, $category);
