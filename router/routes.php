@@ -2,12 +2,12 @@
 
 return [
     '/' => 'controllers/index.php',
-    '/akcja' => 'controllers/akcja.php',
-    '/dramat' => 'controllers/dramat.php',
-    '/komedia' => 'controllers/komedia.php',
-    '/horror' => 'controllers/horror.php',
-    '/thriller' => 'controllers/thriller.php',
-    '/sciencefiction' => 'controllers/sciencefiction.php',
-    '/animacja' => 'controllers/animacja.php',
+    '/akcja' => 'controllers/movie.php',
+    '/dramat' => 'controllers/movie.php',
+    '/komedia' => 'controllers/movie.php',
+    '/horror' => 'controllers/movie.php',
+    '/thriller' => 'controllers/movie.php',
+    '/sciencefiction' => 'controllers/movie.php',
+    '/animacja' => 'controllers/movie.php',
     'szczegoly' => 'controllers/movieDetails.php'
 ];

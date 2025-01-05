@@ -1,7 +1,5 @@
 <?php
 
-$title = 'Filmy Akcji';
-
 require 'partials/header.view.php';
 require 'partials/mainInclude.view.php';
 require 'partials/menu.view.php';
