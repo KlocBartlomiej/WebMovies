@@ -1,6 +1,6 @@
 <?php
 
-$title = 'Szczegóły filmu "' . $movie['tytul'] . '"';
+$title = 'Szczegóły filmu "' . $movie['tytul'] . '" (' . $movie['rok_produkcji'] . ')';
 
 require 'partials/header.view.php';
 require 'partials/detailsInclude.view.php';
