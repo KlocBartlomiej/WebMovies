@@ -11,9 +11,18 @@ function uriIs($uri){
     return $_SERVER['REQUEST_URI']===$uri;
 }
 
+function base_path($path) {
+    return BASE_PATH . $path;
+}
+
+function view($path, $attributes = []) {
+    extract($attributes);
+    require base_path('view/' . $path);
+}
+
 function abort($code = 404){
     http_response_code($code);
-    require "view/{$code}.php";
+    require base_path("view/{$code}.php");
     die();
 }
 

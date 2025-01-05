@@ -25,4 +25,8 @@ $title = $titleTable[$category];
 
 $movies = addAndFetch($db, $category);
 
-require 'view/movie.view.php';
+view('movie.view.php', [
+    'title' => $title,
+    'category' => $category,
+    'movies' => $movies
+]);

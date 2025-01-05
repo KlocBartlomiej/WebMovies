@@ -8,4 +8,4 @@ if (!$movie) {
 
 //TODO należy także zwrócić wszystkie komentarze, jakie do tej pory zostały dodane do filmu
 
-require 'view/movieDetails.view.php';
+view('movieDetails.view.php', [ 'movie' => $movie]);

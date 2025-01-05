@@ -5,7 +5,7 @@ class Db{
 
     public function __construct() {
         try{
-            $this->connection = new PDO("sqlite:file:database/filmyDatabase.sqlite");
+            $this->connection = new PDO("sqlite:file:" . BASE_PATH . "database/filmyDatabase.sqlite");
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch( PDOException $Exception ) {

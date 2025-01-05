@@ -2,8 +2,7 @@
 
 $title = 'Szczegóły filmu "' . $movie['tytul'] . '" (' . $movie['rok_produkcji'] . ')';
 
-require 'partials/header.view.php';
-require 'partials/detailsInclude.view.php';
-require 'partials/menu.view.php';
-require 'details.view.php';
-require 'partials/footer.view.php';
+view('partials/header.view.php', [ 'title' => $title ]);
+view('partials/menu.view.php');
+view('details.view.php', [ 'movie' => $movie]);
+view('partials/footer.view.php');

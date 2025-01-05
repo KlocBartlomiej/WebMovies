@@ -1,8 +1,5 @@
 <?php
 
-$title = 'Lista Filmów';
-
-require 'partials/header.view.php';
-require 'partials/mainInclude.view.php';
-require 'partials/menu.view.php';
-require 'partials/footer.view.php';
+view('partials/header.view.php', [ 'title' => 'Lista Filmów']);
+view('partials/menu.view.php');
+view('partials/footer.view.php');

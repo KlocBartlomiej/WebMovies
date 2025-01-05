@@ -2,6 +2,7 @@
 
 return [
     '/' => 'controllers/index.php',
+
     '/akcja' => 'controllers/movie.php',
     '/dramat' => 'controllers/movie.php',
     '/komedia' => 'controllers/movie.php',
@@ -9,5 +10,6 @@ return [
     '/thriller' => 'controllers/movie.php',
     '/sciencefiction' => 'controllers/movie.php',
     '/animacja' => 'controllers/movie.php',
+
     'szczegoly' => 'controllers/movieDetails.php'
 ];

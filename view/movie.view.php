@@ -1,8 +1,7 @@
 <?php
 
-require 'partials/header.view.php';
-require 'partials/mainInclude.view.php';
-require 'partials/menu.view.php';
-require 'partials/addMovieModal.view.php';
-require 'partials/showMovies.php';
-require 'partials/footer.view.php';
+view('partials/header.view.php', [ 'title' => $title ]);
+view('partials/menu.view.php');
+view('partials/addMovieModal.view.php');
+view('partials/showMovies.php', [ 'movies' => $movies]);
+view('partials/footer.view.php');
