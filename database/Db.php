@@ -75,6 +75,18 @@ class Db{
             1999,
             "Horror",
             "' . date('Y-m-d H:i:s') . '")')->execute();
+
+        $this->connection->prepare('INSERT OR REPLACE INTO uzytkownicy ("id", "login", "haslo")
+            VALUES (1, "admin", "admin")')->execute();
+        $this->connection->prepare('INSERT OR REPLACE INTO uzytkownicy ("id", "login", "haslo")
+            VALUES (2, "notAdmin", "abc")')->execute();
+
+        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "id_uzytkownika", "komentarz") 
+            VALUES(1,1,1,"Bardzo fajny film.")')->execute();
+        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "id_uzytkownika", "komentarz") 
+            VALUES(1,1,2,"Podobał mnie się, polecam.")')->execute();
+        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "id_uzytkownika", "komentarz") 
+            VALUES(1,2,1,"Dobrze chłopaki robią, dobrze jest, dobrze robią, jest git. Pozdrawiam całą ekipę, niech pozytywny przekaz leci.")')->execute();
     }
 
     public function executeSelectQuery($query) {

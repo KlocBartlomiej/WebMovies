@@ -5,7 +5,7 @@
     <title>Lista Filmów</title>
     <meta name="description" content="filmy">
     <meta name="keywords" content="film">
-    <meta name="author" content="Krzysztof Suwała">
+    <meta name="author" content="Bartłomie Kloc">
     <meta http-equiv="X-Ua-Compatible" content="IE=edge,chrome=1">
 
     <link rel=icon” href=“favicon.ico” type=“image/x-icon”>

@@ -37,3 +37,14 @@ function addAndFetch($db, $category) {
     
     return $db->executeSelectQuery("SELECT * FROM filmy WHERE kategoria = '" . $category . "';");
 }
+
+function isLoginAttemptSuccessfull($db, $login, $password) {
+    $user = $db->executeSelectQuery("SELECT * FROM uzytkownicy WHERE login = '" . $login . "' AND haslo = '" . $password . "';")[0];
+
+    if(!$user) {
+        return false;
+    }
+
+    $_SESSION['logged-in'] = $user['id'];
+    return true;
+}

@@ -11,5 +11,6 @@ return [
     '/sciencefiction' => 'controllers/movie.php',
     '/animacja' => 'controllers/movie.php',
 
-    'szczegoly' => 'controllers/movieDetails.php'
+    '/szczegoly' => 'controllers/movieDetails.php',
+    '/wyloguj' => 'public/logOut.php'
 ];

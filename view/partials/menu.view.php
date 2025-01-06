@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="black-box">
     <div><a href="/akcja">Filmy Akcji</a></div>
     <div><a href="/dramat">Dramaty</a></div>
     <div><a href="/komedia">Komedia</a></div>
@@ -6,5 +6,12 @@
     <div><a href="/thriller">Thriller</a></div>
     <div><a href="/sciencefiction">Science Fiction</a></div>
     <div><a href="/animacja">Animacja</a></div>
-    <button class="add-movie-button" onclick="openAddMovieModal()">Dodaj Film</button>
+    <?php 
+    if ($_SESSION['logged-in'] == 1) {
+        echo '<button class="red-button" onclick="openAddMovieModal()">Dodaj Film</button>';
+    }
+    ?>
+    <a href="/wyloguj">
+        <button class="red-button">Wyloguj</button>
+    </a>
 </div>
