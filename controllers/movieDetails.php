@@ -6,6 +6,6 @@ if (!$movie) {
     abort();
 }
 
-//TODO należy także zwrócić wszystkie komentarze, jakie do tej pory zostały dodane do filmu
+$comments = getComments($db, $movie['id']);
 
-view('movieDetails.view.php', [ 'movie' => $movie]);
+view('movieDetails.view.php', [ 'movie' => $movie, 'comments' => $comments]);

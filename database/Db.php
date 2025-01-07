@@ -84,9 +84,9 @@ class Db{
         $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "id_uzytkownika", "komentarz") 
             VALUES(1,1,1,"Bardzo fajny film.")')->execute();
         $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "id_uzytkownika", "komentarz") 
-            VALUES(1,1,2,"Podobał mnie się, polecam.")')->execute();
+            VALUES(2,1,2,"Podobał mnie się, polecam.")')->execute();
         $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "id_uzytkownika", "komentarz") 
-            VALUES(1,2,1,"Dobrze chłopaki robią, dobrze jest, dobrze robią, jest git. Pozdrawiam całą ekipę, niech pozytywny przekaz leci.")')->execute();
+            VALUES(3,2,1,"Dobrze chłopaki robią, dobrze jest, dobrze robią, jest git. Pozdrawiam całą ekipę, niech pozytywny przekaz leci.")')->execute();
     }
 
     public function executeSelectQuery($query) {

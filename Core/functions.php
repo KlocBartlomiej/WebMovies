@@ -30,12 +30,16 @@ function getMovie($db, $id) {
     return $db->executeSelectQuery("SELECT * FROM filmy WHERE id = '" . $id . "';")[0];
 }
 
-function addAndFetch($db, $category) {
+function addAndFetchMovie($db, $category) {
     if (isset($_POST['addMovie'])) {
         $db->addMovie($_POST, $category);
     }
     
     return $db->executeSelectQuery("SELECT * FROM filmy WHERE kategoria = '" . $category . "';");
+}
+
+function getComments($db, $id) {
+    return $db->executeSelectQuery("SELECT * FROM komentarze WHERE id_filmu = '" . $id . "';");
 }
 
 function isLoginAttemptSuccessfull($db, $login, $password) {

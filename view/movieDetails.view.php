@@ -30,7 +30,9 @@ view('partials/menu.view.php');
 
     <br>
     <div>
-        <?php //TODO ten div jest pojemnikiem, do którego włożę komentarze wyjęte z bazy danych ?>
+        <?php foreach ($comments as $comment) : ?>
+            <h4><?= $comment['komentarz'] ?></h4>
+        <?php endforeach; ?>
     </div>
 
 </div>
