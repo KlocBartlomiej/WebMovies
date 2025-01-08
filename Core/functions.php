@@ -42,7 +42,7 @@ function getComments($db, $id) {
     return $db->executeSelectQuery("SELECT * FROM komentarze WHERE id_filmu = '" . $id . "';");
 }
 
-function isLoginAttemptSuccessfull($db, $login, $password) {
+function isLoginAttemptSuccessfull($db, $login, $password, $nick) {
     $user = $db->executeSelectQuery("SELECT * FROM uzytkownicy WHERE login = '" . $login . "' AND haslo = '" . $password . "';")[0];
 
     if(!$user) {
@@ -50,5 +50,6 @@ function isLoginAttemptSuccessfull($db, $login, $password) {
     }
 
     $_SESSION['logged-in'] = $user['id'];
+    $_SESSION['nick'] = $nick;
     return true;
 }

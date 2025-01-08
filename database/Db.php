@@ -42,10 +42,9 @@ class Db{
         $this->connection->query('CREATE TABLE IF NOT EXISTS "komentarze" (
             "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
             "id_filmu" INTEGER NOT NULL,
-            "id_uzytkownika" INTEGER NOT NULL,
+            "nazwa_uzytkownika" VARCHAR NOT NULL,
             "komentarz" VARCHAR NOT NULL,
-            FOREIGN KEY(id_filmu) REFERENCES filmy(id),
-            FOREIGN KEY(id_uzytkownika) REFERENCES uzytkownicy(id)
+            FOREIGN KEY(id_filmu) REFERENCES filmy(id)
         )');
     }
 
@@ -81,12 +80,12 @@ class Db{
         $this->connection->prepare('INSERT OR REPLACE INTO uzytkownicy ("id", "login", "haslo")
             VALUES (2, "notAdmin", "abc")')->execute();
 
-        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "id_uzytkownika", "komentarz") 
-            VALUES(1,1,1,"Bardzo fajny film.")')->execute();
-        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "id_uzytkownika", "komentarz") 
-            VALUES(2,1,2,"Podobał mnie się, polecam.")')->execute();
-        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "id_uzytkownika", "komentarz") 
-            VALUES(3,2,1,"Dobrze chłopaki robią, dobrze jest, dobrze robią, jest git. Pozdrawiam całą ekipę, niech pozytywny przekaz leci.")')->execute();
+        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "nazwa_uzytkownika", "komentarz") 
+            VALUES(1,1,"Kamil","Bardzo fajny film.")')->execute();
+        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "nazwa_uzytkownika", "komentarz") 
+            VALUES(2,1,"Kuba","Podobał mnie się, polecam.")')->execute();
+        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "nazwa_uzytkownika", "komentarz") 
+            VALUES(3,2,"Zenon Wiertara","Dobrze chłopaki robią, dobrze jest, dobrze robią, jest git. Pozdrawiam całą ekipę, niech pozytywny przekaz leci.")')->execute();
     }
 
     public function executeSelectQuery($query) {
