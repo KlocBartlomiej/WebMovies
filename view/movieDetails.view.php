@@ -7,14 +7,20 @@ view('partials/menu.view.php');
 ?>
 
 <div class="movie" width=100% height=100%>
-    <h2>Film "<?=$movie['tytul']?>" należy do kategorii - <?=$movie['kategoria']?>.</h2>
-    <h3>Został dodany do kolekcji dnia <?=substr($movie['data_dodania'],0,10)?>, o godzinie <?=substr($movie['data_dodania'],10)?></h3>
-    <br>
-    <p><?= $movie['opis'] ?></p>
+    <div style="float: left;">
+        <img href="<?= $movie['sciezka_do_filmu'] ?>">
+    </div>
+    <div style="float: left;">
+        <h2>Film "<?=$movie['tytul']?>" należy do kategorii - <?=$movie['kategoria']?>.</h2>
+        <h3>Został dodany do kolekcji dnia <?=substr($movie['data_dodania'],0,10)?>, o godzinie <?=substr($movie['data_dodania'],10)?></h3>
+        <br>
+        <p><?= $movie['opis'] ?></p>
+    </div>
+    <div style="clear: both;"></div>
 
     <?php 
     if ($_SESSION['logged-in'] == 1) {
-        //TODO pozostaje użyć jeszcze $movie['url'] aby spróbować dostać się do filmu i odwtorzyć go w przeglądarce
+        //TODO pozostaje użyć jeszcze $movie['sciezka_do_filmu'] aby spróbować dostać się do filmu i odwtorzyć go w przeglądarce
         echo '<button style="margin-left: 25px;">Obejrzyj online</button>';
         echo '<button style="margin-left: 25px;">Edytuj</button>';
         echo '<button style="margin-left: 25px;">Usuń</button>';

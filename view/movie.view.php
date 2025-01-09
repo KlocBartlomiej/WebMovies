@@ -12,24 +12,34 @@ view('partials/menu.view.php');
 
             <h2>Dodaj film do obecnej kategorii</h2>
 
-            <label for="title">Proszę podać tytuł filmu:</label>
+            <label for="tytul">Proszę podać tytuł filmu:</label>
             <br>
-            <input type="text" id="title" name="title" placeholder="Tytuł filmu" required>
+            <input type="text" id="tytul" name="tytul" placeholder="Tytuł filmu" required>
             <br><br>
 
-            <label for="description">Proszę napisać opis:</label>
+            <label for="opis">Proszę napisać opis:</label>
             <br>
-            <input type="text" id="description" name="description" placeholder="Opis filmu" required>
+            <input type="text" id="opis" name="opis" placeholder="Opis filmu" required>
             <br><br>
 
-            <label for="url">Proszę podać ścieżkę do filmu na dysku:</label>
+            <label for="sciezka_do_filmu">Proszę podać ścieżkę do filmu na dysku:</label>
             <br>
-            <input type="text" id="url" name="url" placeholder="URL do filmy na dysku" required>
+            <input type="text" id="sciezka_do_filmu" name="sciezka_do_filmu" placeholder="sciezka_do_filmu do filmy na dysku" required>
             <br><br>
 
-            <label for="year">Proszę podać rok premiery:</label>
+            <label for="sciezka_do_okladki">Proszę podać ścieżkę do filmu na dysku:</label>
             <br>
-            <input type="text" id="year" name="year" placeholder="Rok produkcji" required>
+            <input type="text" id="sciezka_do_okladki" name="sciezka_do_okladki" placeholder="Rok produkcji" required>
+            <br><br>
+
+            <label for="kategoria">Proszę podać rok premiery:</label>
+            <br>
+            <input type="text" id="kategoria" name="kategoria" placeholder="Kategoria" required>
+            <br><br>
+
+            <label for="rok">Proszę podać rok premiery:</label>
+            <br>
+            <input type="text" id="rok" name="rok" placeholder="Rok produkcji" required>
             <br><br><br>
 
             <input type="submit" name="addMovie" value="Dodaj Film">
@@ -47,7 +57,8 @@ view('partials/menu.view.php');
                         id: "'.$movie['id'].'",
                         title: "'.$movie['tytul'].'",
                         description: "'.$movie['opis'].'",
-                        url: "'.$movie['url'].'",
+                        sciezka_do_filmu: "'.$movie['sciezka_do_filmu'].'",
+                        sciezka_do_okladki: "'.$movie['sciezka_do_okladki'].'",
                         year: "'.$movie['rok_produkcji'].'",
                         category: "'.$movie['kategoria'].'",
                         addDate: "'.$movie['data_dodania'].'"
