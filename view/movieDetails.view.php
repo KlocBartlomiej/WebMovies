@@ -22,20 +22,29 @@ view('partials/menu.view.php');
     ?>
 
     <br>
-    <div>
-        <h4>Komentarze:</h4>
-        <input type="text" placeholder="Dodaj komentarz">
-        <button onclick="addComment(event)">Dodaj</button>
-    </div>
+    <form method="post">
+        <input hidden name="id_filmu" value="<?= $movie['id'] ?>">
+        <input hidden name="nick" value="<?= $_SESSION['nick'] ?>">
+
+        <h4>Dodaj swój komentarz:</h4>
+        <input type="text" name="comment" placeholder="Dodaj komentarz">
+        <input type="submit" name="addComment" value="Dodaj">
+    </form>
 
     <br>
-    <div>
-        <?php foreach ($comments as $comment) : ?>
-            <h4><?= $comment['komentarz'] ?></h4>
-        <?php endforeach; ?>
-    </div>
-
 </div>
+
+<div>
+    <?php foreach ($comments as $comment) : ?>
+        <br>
+        <div class="movie" width=100% height=100%>
+        <h3><?= $comment['nazwa_uzytkownika'] ?>  napisał(a):</h3>
+        <h4><?= $comment['komentarz'] ?></h4>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
 
 <script>
     function showMovies(){}

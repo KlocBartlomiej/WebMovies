@@ -44,6 +44,7 @@ class Db{
             "id_filmu" INTEGER NOT NULL,
             "nazwa_uzytkownika" VARCHAR NOT NULL,
             "komentarz" VARCHAR NOT NULL,
+            "data_dodania" DATETIME NOT NULL,
             FOREIGN KEY(id_filmu) REFERENCES filmy(id)
         )');
     }
@@ -80,12 +81,12 @@ class Db{
         $this->connection->prepare('INSERT OR REPLACE INTO uzytkownicy ("id", "login", "haslo")
             VALUES (2, "notAdmin", "abc")')->execute();
 
-        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "nazwa_uzytkownika", "komentarz") 
-            VALUES(1,1,"Kamil","Bardzo fajny film.")')->execute();
-        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "nazwa_uzytkownika", "komentarz") 
-            VALUES(2,1,"Kuba","Podobał mnie się, polecam.")')->execute();
-        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "nazwa_uzytkownika", "komentarz") 
-            VALUES(3,2,"Zenon Wiertara","Dobrze chłopaki robią, dobrze jest, dobrze robią, jest git. Pozdrawiam całą ekipę, niech pozytywny przekaz leci.")')->execute();
+        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "nazwa_uzytkownika", "komentarz", "data_dodania") 
+            VALUES(1,1,"Kamil","Bardzo fajny film.", "' . date('Y-m-d H:i:s') . '")')->execute();
+        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "nazwa_uzytkownika", "komentarz","data_dodania") 
+            VALUES(2,1,"Kuba","Podobał mnie się, polecam.", "' . date('Y-m-d H:i:s') . '")')->execute();
+        $this->connection->prepare('INSERT OR REPLACE INTO komentarze ("id", "id_filmu", "nazwa_uzytkownika", "komentarz", "data_dodania") 
+            VALUES(3,2,"Zenon Wiertara","Dobrze chłopaki robią, dobrze jest, dobrze robią, jest git. Pozdrawiam całą ekipę, niech pozytywny przekaz leci.", "' . date('Y-m-d H:i:s') . '")')->execute();
     }
 
     public function executeSelectQuery($query) {
@@ -101,6 +102,19 @@ class Db{
             "url" => $post['url'],
             "rok_produkcji" => $post['year'],
             "kategoria" => $category,
+            "data_dodania" => date('Y-m-d H:i:s'),
+        ];
+        $statement = $this->connection->prepare($insert);
+        return $statement->execute($data);
+    }
+
+    public function addComment($post) {
+        $insert = 'INSERT INTO  komentarze ("id_filmu", "nazwa_uzytkownika", "komentarz", "data_dodania")
+            VALUES (:id_filmu, :nazwa_uzytkownika, :komentarz, :data_dodania)';
+        $data = [
+            "id_filmu" => $post['id_filmu'],
+            "nazwa_uzytkownika" => $post['nick'],
+            "komentarz" => $post['comment'],
             "data_dodania" => date('Y-m-d H:i:s'),
         ];
         $statement = $this->connection->prepare($insert);

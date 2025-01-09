@@ -6,6 +6,6 @@ if (!$movie) {
     abort();
 }
 
-$comments = getComments($db, $movie['id']);
+$comments = addAndFetchComments($db, $movie['id']);
 
 view('movieDetails.view.php', [ 'movie' => $movie, 'comments' => $comments]);

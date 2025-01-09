@@ -38,8 +38,12 @@ function addAndFetchMovie($db, $category) {
     return $db->executeSelectQuery("SELECT * FROM filmy WHERE kategoria = '" . $category . "';");
 }
 
-function getComments($db, $id) {
-    return $db->executeSelectQuery("SELECT * FROM komentarze WHERE id_filmu = '" . $id . "';");
+function addAndFetchComments($db, $id_filmu) {
+    if (isset($_POST['addComment'])) {
+        $db->addComment($_POST);
+    }
+
+    return $db->executeSelectQuery("SELECT * FROM komentarze WHERE id_filmu = '" . $id_filmu . "';");
 }
 
 function isLoginAttemptSuccessfull($db, $login, $password, $nick) {
