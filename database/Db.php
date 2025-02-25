@@ -90,8 +90,10 @@ class Db{
             VALUES(3,2,"Zenon Wiertara","Dobrze chłopaki robią, dobrze jest, dobrze robią, jest git. Pozdrawiam całą ekipę, niech pozytywny przekaz leci.", "' . date('Y-m-d H:i:s') . '")')->execute();
     }
 
-    public function executeSelectQuery($query) {
-        return $this->connection->query($query)->fetchAll();
+    public function executeSelectQuery($query, $data = []) {
+        $statement = $this->connection->prepare($query);
+        $statement->execute($data);
+        return $statement->fetchAll();
     }
 
     public function addMovie($post, $category) {

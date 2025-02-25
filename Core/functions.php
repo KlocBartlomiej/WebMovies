@@ -27,7 +27,7 @@ function abort($code = 404){
 }
 
 function getMovie($db, $id) {
-    return $db->executeSelectQuery("SELECT * FROM filmy WHERE id = '" . $id . "';")[0];
+    return $db->executeSelectQuery("SELECT * FROM filmy WHERE id = ?;", [$id])[0];
 }
 
 function addAndFetchMovie($db, $category) {
@@ -35,7 +35,7 @@ function addAndFetchMovie($db, $category) {
         $db->addMovie($_POST, $category);
     }
     
-    return $db->executeSelectQuery("SELECT * FROM filmy WHERE kategoria = '" . $category . "';");
+    return $db->executeSelectQuery("SELECT * FROM filmy WHERE kategoria = ?;", [$category]);
 }
 
 function addAndFetchComments($db, $id_filmu) {
@@ -43,11 +43,11 @@ function addAndFetchComments($db, $id_filmu) {
         $db->addComment($_POST);
     }
 
-    return $db->executeSelectQuery("SELECT * FROM komentarze WHERE id_filmu = '" . $id_filmu . "';");
+    return $db->executeSelectQuery("SELECT * FROM komentarze WHERE id_filmu = ?;", [$id_filmu]);
 }
 
 function isLoginAttemptSuccessfull($db, $login, $password, $nick) {
-    $user = $db->executeSelectQuery("SELECT * FROM uzytkownicy WHERE login = '" . $login . "' AND haslo = '" . $password . "';")[0];
+    $user = $db->executeSelectQuery("SELECT * FROM uzytkownicy WHERE login = ? AND haslo = ?;", [$login, $password])[0];
 
     if(!$user) {
         return false;
