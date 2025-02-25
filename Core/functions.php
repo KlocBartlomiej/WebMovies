@@ -30,12 +30,14 @@ function getMovie($db, $id) {
     return $db->executeSelectQuery("SELECT * FROM filmy WHERE id = ?;", [$id])[0];
 }
 
-function addAndFetchMovie($db, $category) {
-    if (isset($_POST['addMovie'])) {
-        $db->addMovie($_POST, $category);
-    }
-    
+function fetchMovies($db, $category) {
     return $db->executeSelectQuery("SELECT * FROM filmy WHERE kategoria = ?;", [$category]);
+}
+
+function addMovieIfRequired($db) {
+    if (isset($_POST['addMovie'])) {
+        $db->addMovie();
+    }
 }
 
 function addAndFetchComments($db, $id_filmu) {

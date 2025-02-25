@@ -7,10 +7,10 @@ view('partials/menu.view.php');
 ?>
 
 <div class="movie" width=100% height=100%>
-    <div style="float: left;">
-        <img href="<?= $movie['sciezka_do_filmu'] ?>">
+    <div style="float: left; width: 20%;">
+        <img href="<?= $movie['sciezka_do_okladki'] ?>">
     </div>
-    <div style="float: left;">
+    <div style="float: left; width: 80%;">
         <h2>Film "<?=$movie['tytul']?>" należy do kategorii - <?=$movie['kategoria']?>.</h2>
         <h3>Został dodany do kolekcji dnia <?=substr($movie['data_dodania'],0,10)?>, o godzinie <?=substr($movie['data_dodania'],10)?></h3>
         <br>

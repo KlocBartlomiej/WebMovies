@@ -23,7 +23,8 @@ $titleTable = [
 $category = $categoryTable[$uri];
 $title = $titleTable[$category];
 
-$movies = addAndFetchMovie($db, $category);
+addMovieIfRequired($db);
+$movies = fetchMovies($db, $category);
 
 view('movie.view.php', [
     'title' => $title,

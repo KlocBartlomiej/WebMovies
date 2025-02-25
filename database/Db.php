@@ -96,16 +96,16 @@ class Db{
         return $statement->fetchAll();
     }
 
-    public function addMovie($post, $category) {
+    public function addMovie() {
         $insert = 'INSERT INTO  filmy ("tytul", "opis", "sciezka_do_filmu", "sciezka_do_okladki", "rok_produkcji", "kategoria", "data_dodania")
             VALUES (:tytul, :opis, :sciezka_do_filmu, :sciezka_do_okladki, :rok_produkcji, :kategoria, :data_dodania)';
         $data = [
-            "tytul" => $post['tytul'],
-            "opis" => $post['opis'],
-            "sciezka_do_filmu" => $post['sciezka_do_filmu'],
-            "sciezka_do_okladki" => $post['sciezka_do_okladki'],
-            "rok_produkcji" => $post['rok'],
-            "kategoria" => $post['kategoria'],
+            "tytul" => $_POST['tytul'],
+            "opis" => $_POST['opis'],
+            "sciezka_do_filmu" => $_POST['sciezka_do_filmu'],
+            "sciezka_do_okladki" => $_POST['sciezka_do_okladki'],
+            "rok_produkcji" => $_POST['rok'],
+            "kategoria" => $_POST['kategoria'],
             "data_dodania" => date('Y-m-d H:i:s'),
         ];
         $statement = $this->connection->prepare($insert);
