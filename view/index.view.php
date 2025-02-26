@@ -4,7 +4,7 @@ view('partials/header.view.php', [ 'title' => 'Lista Filmów']);
 view('partials/menu.view.php');
 ?>
 
-<script>
+<script type="text/javascript">
     function showMovies(){}
 </script>
 

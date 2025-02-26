@@ -1,4 +1,4 @@
-<?php 
+<?php
 $title = 'Proszę się zalogować aby uzyskać dostęp do serwisu';
 view('partials/header.view.php', [ 'title' => $title ]);
 ?>
@@ -11,7 +11,7 @@ view('partials/header.view.php', [ 'title' => $title ]);
         <br>
         <input type="text" id="login" name="login" placeholder="login" required>
         <br><br>
-            
+
         <label for="password">Proszę podać haslo:</label>
         <br>
         <input type="text" id="password" name="password" placeholder="haslo" required>
@@ -28,7 +28,7 @@ view('partials/header.view.php', [ 'title' => $title ]);
     </form>
 </div>
 
-<script>
+<script type="text/javascript">
     function showMovies(){}
 </script>
 

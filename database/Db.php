@@ -96,14 +96,14 @@ class Db{
         return $statement->fetchAll();
     }
 
-    public function addMovie() {
+    public function addMovie($target_cover_file) {
         $insert = 'INSERT INTO  filmy ("tytul", "opis", "sciezka_do_filmu", "sciezka_do_okladki", "rok_produkcji", "kategoria", "data_dodania")
             VALUES (:tytul, :opis, :sciezka_do_filmu, :sciezka_do_okladki, :rok_produkcji, :kategoria, :data_dodania)';
         $data = [
             "tytul" => $_POST['tytul'],
             "opis" => $_POST['opis'],
             "sciezka_do_filmu" => $_POST['sciezka_do_filmu'],
-            "sciezka_do_okladki" => $_POST['sciezka_do_okladki'],
+            "sciezka_do_okladki" => $target_cover_file,
             "rok_produkcji" => $_POST['rok'],
             "kategoria" => $_POST['kategoria'],
             "data_dodania" => date('Y-m-d H:i:s'),

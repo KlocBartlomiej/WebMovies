@@ -36,7 +36,13 @@ function fetchMovies($db, $category) {
 
 function addMovieIfRequired($db) {
     if (isset($_POST['addMovie'])) {
-        $db->addMovie();
+        $target_image_dir = base_path("covers/");
+        $target_cover_file = $target_image_dir . basename($_FILES["sciezka_do_okladki"]["name"]);
+        if (!move_uploaded_file($_FILES["sciezka_do_okladki"]["tmp_name"], $target_cover_file)) {
+            //TODO abort with some code indicating wrong form data
+            //TODO add more checks, eg for file already uploaded, size over some value etc.
+        }
+        $db->addMovie($target_cover_file);
     }
 }
 

@@ -6,7 +6,7 @@
     <div><a href="/thriller">Thriller</a></div>
     <div><a href="/sciencefiction">Science Fiction</a></div>
     <div><a href="/animacja">Animacja</a></div>
-    <?php 
+    <?php
     if ($_SESSION['logged-in'] == 1) {
         echo '<button class="red-button" onclick="openAddMovieModal()">Dodaj Film</button>';
     }

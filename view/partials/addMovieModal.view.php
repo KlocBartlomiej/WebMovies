@@ -1,8 +1,6 @@
-
 <div id="addMovieModal" class="modal">
     <div class="modal-content">
-        <form method="post">
-            
+        <form method="post" enctype="multipart/form-data">
             <span class="close" onclick="closeAddMovieModal()">&times;</span>
 
             <h2>Dodaj film</h2>
