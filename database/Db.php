@@ -131,7 +131,18 @@ class Db{
     public function updateMovie($data) {
         $update = 'UPDATE filmy SET tytul = :tytul, opis = :opis, sciezka_do_filmu = :sciezka_do_filmu, sciezka_do_okladki = :sciezka_do_okladki, rok_produkcji = :rok_produkcji, kategoria = :kategoria WHERE id = :id';
         $statement = $this->connection->prepare($update);
-        return $statement->execute($data);
+
+        $newData = [
+            "id" => $data['id'],
+            "tytul" => $data['tytul'],
+            "opis" => $data['opis'],
+            "sciezka_do_filmu" => $data['sciezka_do_filmu'],
+            "sciezka_do_okladki" => $data['sciezka_do_okladki'],
+            "rok_produkcji" => $data['rok'],
+            "kategoria" => $data['kategoria']
+        ];
+
+        return $statement->execute($newData);
     }
 
     public function deleteMovie($id) {
