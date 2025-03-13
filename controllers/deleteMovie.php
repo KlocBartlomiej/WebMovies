@@ -1,5 +1,9 @@
 <?php
 
+if ($_SESSION['logged-in'] != 1) {
+    abort(403);
+}
+
 if (isset($_POST['deleteMovie'])) {
     $db->deleteMovie($_POST['id']);
     header('Location: /');

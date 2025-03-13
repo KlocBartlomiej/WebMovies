@@ -97,19 +97,22 @@ class Db{
     }
 
     public function addMovie($target_cover_file) {
-        $insert = 'INSERT INTO  filmy ("tytul", "opis", "sciezka_do_filmu", "sciezka_do_okladki", "rok_produkcji", "kategoria", "data_dodania")
-            VALUES (:tytul, :opis, :sciezka_do_filmu, :sciezka_do_okladki, :rok_produkcji, :kategoria, :data_dodania)';
-        $data = [
-            "tytul" => $_POST['tytul'],
-            "opis" => $_POST['opis'],
-            "sciezka_do_filmu" => $_POST['sciezka_do_filmu'],
-            "sciezka_do_okladki" => $target_cover_file,
-            "rok_produkcji" => $_POST['rok'],
-            "kategoria" => $_POST['kategoria'],
-            "data_dodania" => date('Y-m-d H:i:s'),
-        ];
-        $statement = $this->connection->prepare($insert);
-        return $statement->execute($data);
+        $query = 'INSERT INTO filmy (tytul, opis, sciezka_do_filmu, sciezka_do_okladki, rok_produkcji, kategoria, data_dodania) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        $statement = $this->connection->prepare($query);
+        $result = $statement->execute([
+            $_POST['tytul'],
+            $_POST['opis'],
+            $_POST['sciezka_do_filmu'],
+            $target_cover_file,
+            $_POST['rok'],
+            $_POST['kategoria'],
+            date('Y-m-d H:i:s')
+        ]);
+
+        // Debugging
+        if (!$result) {
+            dd("Failed to insert movie: " . implode(", ", $statement->errorInfo()));
+        }
     }
 
     public function addComment($post) {
@@ -133,6 +136,12 @@ class Db{
 
     public function deleteMovie($id) {
         $delete = 'DELETE FROM filmy WHERE id = ?';
+        $statement = $this->connection->prepare($delete);
+        return $statement->execute([$id]);
+    }
+
+    public function deleteComment($id) {
+        $delete = 'DELETE FROM komentarze WHERE id = ?';
         $statement = $this->connection->prepare($delete);
         return $statement->execute([$id]);
     }

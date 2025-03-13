@@ -36,12 +36,23 @@ function fetchMovies($db, $category) {
 
 function addMovieIfRequired($db) {
     if (isset($_POST['addMovie'])) {
-        $target_image_dir = base_path("covers/");
+        $target_image_dir = base_path("public/covers/");
+        
+        // Ensure the directory exists
+        if (!is_dir($target_image_dir)) {
+            mkdir($target_image_dir, 0777, true);
+        }
+
         $target_cover_file = $target_image_dir . basename($_FILES["sciezka_do_okladki"]["name"]);
         if (!move_uploaded_file($_FILES["sciezka_do_okladki"]["tmp_name"], $target_cover_file)) {
-            //TODO abort with some code indicating wrong form data
-            //TODO add more checks, eg for file already uploaded, size over some value etc.
+            abort(400); // Błąd przesyłania pliku
         }
+
+        // Debugging
+        if (!file_exists($target_cover_file)) {
+            dd("File not uploaded: " . $target_cover_file);
+        }
+
         $db->addMovie($target_cover_file);
     }
 }

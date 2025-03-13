@@ -8,7 +8,7 @@ view('partials/menu.view.php');
 
 <div class="movie" width=100% height=100%>
     <div style="float: left; width: 20%;">
-        <img href="<?= $movie['sciezka_do_okladki'] ?>">
+        <img src="/covers/<?= basename($movie['sciezka_do_okladki']) ?>" alt="Okładka filmu">
     </div>
     <div style="float: left; width: 80%;">
         <h2>Film "<?=$movie['tytul']?>" należy do kategorii - <?=$movie['kategoria']?>.</h2>
@@ -44,6 +44,12 @@ view('partials/menu.view.php');
         <div class="movie" width=100% height=100%>
         <h3><?= $comment['nazwa_uzytkownika'] ?>  napisał(a):</h3>
         <h4><?= $comment['komentarz'] ?></h4>
+        <?php if ($_SESSION['logged-in'] == 1) : ?>
+            <form method="post" style="display:inline;">
+                <input type="hidden" name="comment_id" value="<?= $comment['id'] ?>">
+                <input type="submit" name="deleteComment" value="Usuń">
+            </form>
+        <?php endif; ?>
         </div>
     <?php endforeach; ?>
 </div>
