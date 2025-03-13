@@ -12,5 +12,7 @@ return [
     '/animacja' => 'controllers/movie.php',
 
     '/szczegoly' => 'controllers/movieDetails.php',
-    '/wyloguj' => 'public/logOut.php'
+    '/wyloguj' => 'public/logOut.php',
+    '/edytuj' => 'controllers/editMovie.php',
+    '/usun' => 'controllers/deleteMovie.php'
 ];

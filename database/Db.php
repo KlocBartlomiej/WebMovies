@@ -124,6 +124,18 @@ class Db{
         $statement = $this->connection->prepare($insert);
         return $statement->execute($data);
     }
+
+    public function updateMovie($data) {
+        $update = 'UPDATE filmy SET tytul = :tytul, opis = :opis, sciezka_do_filmu = :sciezka_do_filmu, sciezka_do_okladki = :sciezka_do_okladki, rok_produkcji = :rok_produkcji, kategoria = :kategoria WHERE id = :id';
+        $statement = $this->connection->prepare($update);
+        return $statement->execute($data);
+    }
+
+    public function deleteMovie($id) {
+        $delete = 'DELETE FROM filmy WHERE id = ?';
+        $statement = $this->connection->prepare($delete);
+        return $statement->execute([$id]);
+    }
 }
 
 return new Db();

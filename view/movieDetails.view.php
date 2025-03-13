@@ -20,10 +20,8 @@ view('partials/menu.view.php');
 
     <?php
     if ($_SESSION['logged-in'] == 1) {
-        //TODO pozostaje użyć jeszcze $movie['sciezka_do_filmu'] aby spróbować dostać się do filmu i odwtorzyć go w przeglądarce
-        echo '<button style="margin-left: 25px;">Obejrzyj online</button>';
-        echo '<button style="margin-left: 25px;">Edytuj</button>';
-        echo '<button style="margin-left: 25px;">Usuń</button>';
+        echo '<a href="/edytuj?id=' . $movie['id'] . '"><button style="margin-left: 25px;">Edytuj</button></a>';
+        echo '<a href="/usun?id=' . $movie['id'] . '"><button style="margin-left: 25px;">Usuń</button></a>';
     }
     ?>
 
@@ -49,8 +47,6 @@ view('partials/menu.view.php');
         </div>
     <?php endforeach; ?>
 </div>
-
-
 
 <script type="text/javascript">
     function showMovies(){}
