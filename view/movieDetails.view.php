@@ -8,7 +8,7 @@ view('partials/menu.view.php');
 
 <div class="movie" width=100% height=100%>
     <div style="float: left; width: 20%;">
-        <img src="/covers/<?= basename($movie['sciezka_do_okladki']) ?>" alt="Okładka filmu">
+        <img src="img/covers/<?= basename($movie['sciezka_do_okladki']) ?>" alt="Okładka filmu">
     </div>
     <div style="float: left; width: 80%;">
         <h2>Film "<?=$movie['tytul']?>" należy do kategorii - <?=$movie['kategoria']?>.</h2>
@@ -38,7 +38,7 @@ view('partials/menu.view.php');
     <br>
 </div>
 
-<div>
+<!-- <div>
     <?php foreach ($comments as $comment) : ?>
         <br>
         <div class="movie" width=100% height=100%>
@@ -52,10 +52,6 @@ view('partials/menu.view.php');
         <?php endif; ?>
         </div>
     <?php endforeach; ?>
-</div>
-
-<script type="text/javascript">
-    function showMovies(){}
-</script>
+</div> -->
 
 <?php view('partials/footer.view.php'); ?>

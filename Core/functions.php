@@ -36,7 +36,7 @@ function fetchMovies($db, $category) {
 
 function addMovieIfRequired($db) {
     if (isset($_POST['addMovie'])) {
-        $target_image_dir = base_path("public/covers/");
+        $target_image_dir = base_path("img/covers/");
         
         // Ensure the directory exists
         if (!is_dir($target_image_dir)) {

@@ -5,7 +5,7 @@ view('partials/menu.view.php');
 ?>
 
 <script type="text/javascript">
-    function showMovies(){
+    document.addEventListener('DOMContentLoaded', function() {
         let movies = [];
         <?php
             foreach ($movies as $movie) {
@@ -23,8 +23,7 @@ view('partials/menu.view.php');
             }
         ?>
         movies.forEach(movie => displayMovie(movie));
-    };
+    });
 </script>
-
 
 <?php view('partials/footer.view.php'); ?>

@@ -1,4 +1,4 @@
-<div class="black-box">
+<div class="box">
     <div><a href="/akcja">Filmy Akcji</a></div>
     <div><a href="/dramat">Dramaty</a></div>
     <div><a href="/komedia">Komedia</a></div>

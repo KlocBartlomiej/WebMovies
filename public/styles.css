@@ -2,34 +2,63 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 25px;
-    background-color: #e0e0e0;
     text-align: center;
+    color: #000;
+    background-color: #ddd;
 }
 
-.black-box {
+body[data-theme="light"] {
+    color: 000;
+    background-color: #ddd;
+
+    & > .box {
+        background-color: #000;
+    }
+
+    & > #movies .movie {
+        color: #000;
+        background-color: #fff;
+    }
+}
+
+body[data-theme="dark"] {
+    color: white;
+    background-color: #111;
+
+    & > .box {
+        background-color: #333;
+    }
+
+    & > #movies .movie {
+        color: #eee;
+        background-color: #555;
+    }
+}
+
+.box {
     display: flex;
-    justify-content: space-around; /* Możesz użyć space-between lub space-around */
-    align-items: center; /* Wyśrodkowanie w pionie */
-    background-color: black; /* Czarny kolor tła */
-    padding: 10px; /* Dodaj padding */
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
     margin: 20px 15px;
     cursor: pointer;
     font-weight: bold;
-    color: white; /* Zmiana koloru tekstu na biały */
+    color: #fff;
+    background-color: #000;
 }
 
 .red-button {
-    background-color: red; /* Czerwony kolor tła */
-    color: white; /* Kolor tekstu na biały */
-    border: none; /* Bez ramki */
-    padding: 10px 20px; /* Padding wewnętrzny */
-    cursor: pointer; /* Kursor wskazujący */
-    font-weight: bold; /* Pogrubiony tekst */
-    border-radius: 5px; /* Zaokrąglone rogi */
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
 .red-button:hover {
-    background-color: darkred; /* Ciemniejszy czerwony przy najeździe */
+    background-color:#A01010;
 }
 
 .movie {
@@ -58,7 +87,6 @@ body {
     display: none;
 }
 
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -68,7 +96,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #222;
 }
 
 .modal-content {
@@ -100,7 +128,7 @@ a {
 
 a:link,
 a:visited  {
-    color: white;
+    color: #fff;
 }
 
 a:hover {

@@ -3,7 +3,7 @@ $title = 'Proszę się zalogować aby uzyskać dostęp do serwisu';
 view('partials/header.view.php', [ 'title' => $title ]);
 ?>
 
-<div class="black-box">
+<div class="box">
     <form method="post">
         <br><br>
 
@@ -27,9 +27,5 @@ view('partials/header.view.php', [ 'title' => $title ]);
         <br><br>
     </form>
 </div>
-
-<script type="text/javascript">
-    function showMovies(){}
-</script>
 
 <?php view('partials/footer.view.php'); ?>
