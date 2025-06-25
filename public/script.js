@@ -20,7 +20,7 @@ function displayMovie(movie) {
     movieDiv.className = 'movie';
     movieDiv.innerHTML = `
         <div width=100% height=100%">
-            <a href="/szczegoly/${movie.id}"><h3>${movie.title} (${movie.year})</h3></a>
+            <a href="/szczegoly?id=${movie.id}"><h3>${movie.title} (${movie.year})</h3></a>
         </div>
     `;
 

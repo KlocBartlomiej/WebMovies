@@ -6,7 +6,7 @@ if (isset($_POST['deleteComment'])) {
     $db->deleteComment($_POST['comment_id']);
 }
 
-$movie = getMovie($db, $id);
+$movie = getMovie($db, $_GET['id']);
 
 if (!$movie) {
     abort();

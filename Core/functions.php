@@ -66,13 +66,19 @@ function addAndFetchComments($db, $id_filmu) {
 }
 
 function isLoginAttemptSuccessfull($db, $login, $password, $nick) {
-    $user = $db->executeSelectQuery("SELECT * FROM uzytkownicy WHERE login = ? AND haslo = ?;", [$login, $password])[0];
+    $user = $db->executeSelectQuery("SELECT * FROM uzytkownicy WHERE login = ? AND haslo = ?;", [$login, $password]);
 
-    if(!$user) {
+    if (count($user) !== 0) {
+        $user = $user[0];
+    } else {
         return false;
     }
 
-    $_SESSION['logged-in'] = $user['id'];
+    if (!$user) {
+        return false;
+    }
+
+    $_SESSION['isAdmin'] = $user['id'] === 1;
     $_SESSION['nick'] = $nick;
     return true;
 }

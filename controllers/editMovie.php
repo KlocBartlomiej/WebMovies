@@ -1,12 +1,12 @@
 <?php
 
-if ($_SESSION['logged-in'] != 1) {
+if (!$_SESSION['isAdmin']) {
     abort(403);
 }
 
 if (isset($_POST['editMovie'])) {
     $db->updateMovie($_POST);
-    header('Location: /szczegoly/' . $_POST['id']);
+    header('Location: /szczegoly?id=' . $_POST['id']);
     exit();
 }
 
