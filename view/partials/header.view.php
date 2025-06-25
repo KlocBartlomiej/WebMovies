@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="utf-8">
     <title>Lista Filmów</title>
@@ -9,10 +10,12 @@
 
     <link rel=icon” href=“favicon.ico” type=“image/x-icon”>
     <link rel="stylesheet" href="/styles.css">
-    <script src="/script.js"></script>
+    <script src="scripts/movie.js"></script>
+    <script src="scripts/theme.js"></script>
 </head>
+
 <body>
-    <h1><?=$title?></h1>
+    <h1><?= $title ?></h1>
     <button onclick="togglePreferredTheme()" class="red-button" style="position:fixed; top:50px; right:30px;">
         🌗 Motyw
     </button>

@@ -1,12 +1,18 @@
-<?php
+function displayMovie(movie) {
+  const movieDiv = document.createElement("div");
+  movieDiv.className = "movie";
+  movieDiv.innerHTML = `
+        <div width=100% height=100%">
+            <a href="/szczegoly?id=${movie.id}"><h3>${movie.tytul} (${movie.rok_produkcji})</h3></a>
+        </div>
+    `;
 
-$title = 'Szczegóły filmu "' . $movie['tytul'] . '" (' . $movie['rok_produkcji'] . ')';
+  document.getElementById("movies").appendChild(movieDiv);
+}
 
-view('partials/header.view.php', ['title' => $title]);
-view('partials/menu.view.php');
-?>
-
-<div class="movie" width=100% height=100%>
+function addEventListenerForDetails(movie) {
+  innerHTML = `
+  <div class="movie" width=100% height=100%>
     <div style="float: left; width: 20%;">
         <img src="img/covers/<?= basename($movie['sciezka_do_okladki']) ?>" alt="Okładka filmu">
     </div>
@@ -50,6 +56,6 @@ view('partials/menu.view.php');
             </form>
         <?php endif; ?>
     </div>
-<?php endforeach; ?>
-
-<?php view('partials/footer.view.php'); ?>
+<?php endforeach; ?></form>
+  `
+}

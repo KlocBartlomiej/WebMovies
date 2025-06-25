@@ -14,7 +14,7 @@ view('partials/header.view.php', [ 'title' => $title ]);
 
         <label for="password">Proszę podać haslo:</label>
         <br>
-        <input type="text" id="password" name="password" placeholder="haslo" required>
+        <input type="password" id="password" name="password" placeholder="haslo" required>
         <br><br>
 
         <label for="nick">Proszę podać nick:<br>(Będzie on widoczny przy Twoich komentarzach)</label>

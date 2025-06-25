@@ -1,6 +1,6 @@
 <?php
 
-if ($_SESSION['logged-in'] != 1) {
+if (!$_SESSION['isAdmin']) {
     abort(403);
 }
 
