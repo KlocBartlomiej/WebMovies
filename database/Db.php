@@ -108,11 +108,6 @@ class Db{
             $_POST['kategoria'],
             date('Y-m-d H:i:s')
         ]);
-
-        // Debugging
-        if (!$result) {
-            dd("Failed to insert movie: " . implode(", ", $statement->errorInfo()));
-        }
     }
 
     public function addComment($post) {
