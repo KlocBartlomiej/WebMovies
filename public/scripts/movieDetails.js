@@ -1,16 +1,42 @@
-function displayMovie(movie) {
-  const movieDiv = document.createElement("div");
-  movieDiv.className = "movie";
-  movieDiv.innerHTML = `
-        <div width=100% height=100%">
-            <a href="/szczegoly?id=${movie.id}"><h3>${movie.tytul} (${movie.rok_produkcji})</h3></a>
-        </div>
-    `;
+// <!-- PANEL BOCZNY NA SZCZEGÓŁY FILMU -->
+// <!-- tą część należy dodać jako partial -->
+// <div id="movieDetailsDrawer" class="drawer">
+//     <div class="drawer-content">
+//         <span class="drawer-close" onclick="closeDrawer()">&times;</span>
+//         <div id="drawerMovieContent"></div>
+//     </div>
+// </div>
 
-  document.getElementById("movies").appendChild(movieDiv);
+// PANEL BOCZNY - POKAZYWANIE I ZAMYKANIE
+function openDrawer() {
+  document.getElementById("movieDetailsDrawer").classList.add("open");
+}
+function closeDrawer() {
+  document.getElementById("movieDetailsDrawer").classList.remove("open");
+  document.getElementById("drawerMovieContent").innerHTML = "";
+}
+
+// Panel zamyka się po kliknięciu w tło (poza panelem)
+document.addEventListener("click", function (event) {
+  const drawer = document.getElementById("movieDetailsDrawer");
+  if (
+    drawer &&
+    !drawer.contains(event.target) &&
+    drawer.classList.contains("open")
+  ) {
+    closeDrawer();
+  }
+});
+// Zatrzymanie propagacji kliknięcia wewnątrz panelu
+const drawerElement = document.getElementById("movieDetailsDrawer");
+if (drawerElement) {
+  drawerElement.addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
 }
 
 function addEventListenerForDetails(movie) {
+  //drawer movie content innerHtml ->
   innerHTML = `
   <div class="movie" width=100% height=100%>
     <div style="float: left; width: 20%;">
@@ -42,20 +68,20 @@ function addEventListenerForDetails(movie) {
     </form>
 
     <br>
-</div>
-
-<?php foreach ($comments as $comment) : ?>
-    <br>
-    <div class="movie" width=100% height=100%>
-        <h3><?= $comment['nazwa_uzytkownika'] ?> napisał(a):</h3>
-        <h4><?= $comment['komentarz'] ?></h4>
-        <?php if ($_SESSION['isAdmin']) : ?>
-            <form method="post" style="display:inline;">
-                <input type="hidden" name="comment_id" value="<?= $comment['id'] ?>">
-                <input type="submit" name="deleteComment" value="Usuń">
-            </form>
-        <?php endif; ?>
     </div>
-<?php endforeach; ?></form>
-  `
+
+    <?php foreach ($comments as $comment) : ?>
+        <br>
+        <div class="movie" width=100% height=100%>
+            <h3><?= $comment['nazwa_uzytkownika'] ?> napisał(a):</h3>
+            <h4><?= $comment['komentarz'] ?></h4>
+            <?php if ($_SESSION['isAdmin']) : ?>
+                <form method="post" style="display:inline;">
+                    <input type="hidden" name="comment_id" value="<?= $comment['id'] ?>">
+                    <input type="submit" name="deleteComment" value="Usuń">
+                </form>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?></form>
+  `;
 }
