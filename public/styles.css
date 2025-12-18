@@ -1,160 +1,185 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 25px;
-    text-align: center;
-    color: #000;
-    background-color: #ddd;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 25px;
+  text-align: center;
+  color: #000;
+  background-color: #ddd;
 }
 
 body[data-theme="light"] {
+  color: #000;
+  background-color: #ddd;
+
+  & > .box {
+    background-color: #000;
+  }
+
+  & > #movies > .movie {
     color: #000;
-    background-color: #ddd;
+    background-color: #fff;
+  }
 
-    & > .box {
-        background-color: #000;
-    }
+  & > .movie {
+    color: #000;
+    background-color: #fff;
+  }
 
-    & > #movies > .movie {
-        color: #000;
-        background-color: #fff;
-    }
-
-    & > .movie {
-        color: #000;
-        background-color: #fff;
-    }
-
-    h3 {
+  h3 {
     color: black;
-    }
+  }
 
-    h3:hover {
-        color: red;
-    }
+  h3:hover {
+    color: red;
+  }
 }
 
 body[data-theme="dark"] {
+  color: #fff;
+  background-color: #111;
+
+  & > .box {
+    background-color: #333;
+  }
+
+  & > #movies > .movie {
+    color: #ddd;
+    background-color: #555;
+  }
+
+  & > .movie {
+    color: #ddd;
+    background-color: #555;
+  }
+
+  h3 {
     color: #fff;
-    background-color: #111;
+  }
 
-    & > .box {
-        background-color: #333;
-    }
+  h3:hover {
+    color: red;
+  }
+}
 
-    & > #movies > .movie {
-        color: #ddd;
-        background-color: #555;
-    }
+.menu {
+  position: relative;
+  cursor: pointer;
+}
 
-    & > .movie {
-        color: #ddd;
-        background-color: #555;
-    }
+.menu:hover .menu-option {
+  display: block;
+  background-color: #222;
+}
 
-    h3 {
-        color: #fff;
-    }
+.menu-dropdown {
+    position: absolute;
+}
 
-    h3:hover {
-        color: red;
-    }
+.menu:hover .menu-dropdown {
+  display: block;
+}
+
+.menu-option {
+  position: relative;
+  display: none;
+  padding: 10px 30px;
+  height: 35px;
 }
 
 .box {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px;
-    margin: 20px 15px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #fff;
-    background-color: #000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  margin: 20px 15px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #000;
 }
 
 .red-button {
-    background-color: red;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 5px;
+  cursor: pointer;
+  background-color: red;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 .red-button:hover {
-    background-color:#A01010;
+  background-color: #a01010;
 }
 
 .movie {
-    background: #fff;
-    padding: 20px;
-    margin: 10px 0;
-    border-radius: 5px;
-    justify-content: space-between;
-    align-items: center;
+  background: #fff;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .movie img {
-    max-width: 100px;
-    margin-right: 10px;
+  max-width: 100px;
+  margin-right: 10px;
 }
 
 .comments {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .add-movie-form {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: #222;
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #222;
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 a {
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 a:link,
-a:visited  {
-    color: #fff;
+a:visited {
+  color: #fff;
 }
 
 a:hover {
