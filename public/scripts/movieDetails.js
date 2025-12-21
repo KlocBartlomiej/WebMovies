@@ -1,18 +1,18 @@
-function displayMovie(movie) {
-  const movieDiv = document.createElement("div");
-  movieDiv.className = "movie";
-  movieDiv.innerHTML = `
-        <div width=100% height=100%">
-            <a href="/szczegoly?id=${movie.id}"><h3>${movie.tytul} (${movie.rok_produkcji})</h3></a>
-        </div>
-    `;
-
-  document.getElementById("movies").appendChild(movieDiv);
+function closeDrawer() {
+  document.getElementById("movieDetailsDrawer").classList.remove("open");
+  document.getElementById("drawerMovieContent").innerHTML = "";
 }
 
-function addEventListenerForDetails(movie) {
-  innerHTML = `
-  <div class="movie" width=100% height=100%>
+function addEventListenerForDetails(movieDiv, movie) {
+  movieDiv.addEventListener("click", function () {
+    openDrawer(movie);
+  });
+}
+
+function openDrawer(movie) {
+  document.getElementById("movieDetailsDrawer").classList.add("open");
+  document.getElementById("drawerMovieContent").innerHTML = `
+    <div class="movie" width=100% height=100%>
     <div style="float: left; width: 20%;">
         <img src="img/covers/<?= basename($movie['sciezka_do_okladki']) ?>" alt="Okładka filmu">
     </div>
@@ -23,14 +23,14 @@ function addEventListenerForDetails(movie) {
         <p><?= $movie['opis'] ?></p>
     </div>
     <div style="clear: both;"></div>
-
+<!--
     <?php
     if ($_SESSION['isAdmin']) {
         echo '<a href="/edytuj?id=' . $movie['id'] . '"><button style="margin-left: 25px;">Edytuj</button></a>';
         echo '<a href="/usun?id=' . $movie['id'] . '"><button style="margin-left: 25px;">Usuń</button></a>';
     }
     ?>
-
+-->
     <br>
     <form method="post">
         <input hidden name="id_filmu" value="<?= $movie['id'] ?>">
@@ -43,7 +43,7 @@ function addEventListenerForDetails(movie) {
 
     <br>
 </div>
-
+<!--
 <?php foreach ($comments as $comment) : ?>
     <br>
     <div class="movie" width=100% height=100%>
@@ -56,6 +56,7 @@ function addEventListenerForDetails(movie) {
             </form>
         <?php endif; ?>
     </div>
-<?php endforeach; ?></form>
-  `
+<?php endforeach; ?>
+-->
+  `;
 }

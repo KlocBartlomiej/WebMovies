@@ -22,12 +22,13 @@ view('partials/menu.view.php');
         }
         ?>
         movies.forEach(movie => {
-            displayMovie(movie)
-            addEventListenerForDetails(movie)
-        });
-    });
+            let movieDiv = displayMovie(movie)
+            addEventListenerForDetails(movieDiv, movie)
+        })
+    })
 </script>
 
 <script src="scripts/movieDetails.js"></script>
 
+<?php view('partials/drawer.view.php'); ?>
 <?php view('partials/footer.view.php'); ?>

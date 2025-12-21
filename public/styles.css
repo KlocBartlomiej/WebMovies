@@ -15,22 +15,13 @@ body[data-theme="light"] {
     background-color: #000;
   }
 
-  & > #movies > .movie {
-    color: #000;
-    background-color: #fff;
-  }
-
-  & > .movie {
+  .movie {
     color: #000;
     background-color: #fff;
   }
 
   h3 {
     color: black;
-  }
-
-  h3:hover {
-    color: red;
   }
 }
 
@@ -42,23 +33,18 @@ body[data-theme="dark"] {
     background-color: #333;
   }
 
-  & > #movies > .movie {
+  .movie{
     color: #ddd;
-    background-color: #555;
-  }
-
-  & > .movie {
-    color: #ddd;
-    background-color: #555;
+    background: #555;
   }
 
   h3 {
     color: #fff;
   }
+}
 
-  h3:hover {
-    color: red;
-  }
+h3:hover {
+  color: red;
 }
 
 .menu {
@@ -121,6 +107,7 @@ body[data-theme="dark"] {
   align-items: center;
 }
 
+/* TODO: image will placed inside drawer instead of movie div */
 .movie img {
   max-width: 100px;
   margin-right: 10px;
@@ -141,11 +128,11 @@ body[data-theme="dark"] {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: 100;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   overflow: auto;
   background-color: #222;
 }
@@ -184,4 +171,50 @@ a:visited {
 
 a:hover {
     color: red;
+}
+
+/* TODO: belowe are styles for drawer, which needs to be refactored  */
+
+.drawer {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100%;
+    background-color: #222;
+    color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.drawer.open {
+    right: 0;
+}
+
+#drawerMovieContent img {
+    max-width: 98%;
+    border-radius: 7px;
+    margin-bottom: 12px;
+    background: #fff;
+}
+
+#drawerMovieContent h2 {
+    color: #ffe18b;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+#drawerMovieContent p {
+    color: #f5f5f5;
+    margin-bottom: 0.7em;
+}
+
+body.dark-mode #drawerMovieContent h2 {
+    color: #ffcc66;
+}
+
+body.dark-mode #drawerMovieContent p {
+    color: #ddd;
 }
