@@ -1,18 +1,10 @@
-function displayMovie(movie) {
-  const movieDiv = document.createElement("div");
-  movieDiv.className = "movie";
-  movieDiv.innerHTML = `
-        <div width=100% height=100%">
-            <a href="/szczegoly?id=${movie.id}"><h3>${movie.tytul} (${movie.rok_produkcji})</h3></a>
-        </div>
-    `;
-
-  document.getElementById("movies").appendChild(movieDiv);
-}
-
-function addEventListenerForDetails(movie) {
-  innerHTML = `
-  <div class="movie" width=100% height=100%>
+// PANEL BOCZNY - POKAZYWANIE I ZAMYKANIE
+function openDrawer(movie) {
+  document.getElementById("movieDetailsDrawer").classList.add("open");
+  // TODO ajax call zamiast uzupełniania statycznego
+  // performance chcemy szczegóły tylko jednego filmu i nie zwracać aż tyle danych przy otwieraniu strony
+  document.getElementById("drawerMovieContent").innerHTML = `
+    <div class="movie" width=100% height=100%>
     <div style="float: left; width: 20%;">
         <img src="img/covers/<?= basename($movie['sciezka_do_okladki']) ?>" alt="Okładka filmu">
     </div>
@@ -56,6 +48,32 @@ function addEventListenerForDetails(movie) {
             </form>
         <?php endif; ?>
     </div>
-<?php endforeach; ?></form>
-  `
+<?php endforeach; ?>
+  `;
+}
+function closeDrawer() {
+  document.getElementById("movieDetailsDrawer").classList.remove("open");
+  document.getElementById("drawerMovieContent").innerHTML = "";
+}
+
+function addEventListenerForDetails(movie) {
+  // Panel zamyka się po kliknięciu w tło (poza panelem)
+  document.addEventListener("click", function (event) {
+    const drawer = document.getElementById("movieDetailsDrawer");
+    if (
+      drawer &&
+      !drawer.contains(event.target) &&
+      drawer.classList.contains("open")
+    ) {
+      closeDrawer();
+    }
+  });
+
+  // Zatrzymanie propagacji kliknięcia wewnątrz panelu
+  const drawerElement = document.getElementById("movieDetailsDrawer");
+  if (drawerElement) {
+    drawerElement.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+  }
 }

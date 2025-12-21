@@ -185,3 +185,29 @@ a:visited {
 a:hover {
     color: red;
 }
+
+#drawerMovieContent img {
+    max-width: 98%;
+    border-radius: 7px;
+    margin-bottom: 12px;
+    background: #fff;
+}
+
+#drawerMovieContent h2 {
+    color: #ffe18b;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+#drawerMovieContent p {
+    color: #f5f5f5;
+    margin-bottom: 0.7em;
+}
+
+body.dark-mode #drawerMovieContent h2 {
+    color: #ffcc66;
+}
+
+body.dark-mode #drawerMovieContent p {
+    color: #ddd;
+}
