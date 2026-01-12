@@ -11,7 +11,8 @@ return [
     '/sciencefiction'   => 'controllers/movie.php',
     '/animacja'         => 'controllers/movie.php',
 
-    '/szczegoly'        => 'controllers/movieDetails.php',
+    '/movieDrawer'      => 'controllers/movieDrawer.php',
+
     '/edytuj'           => 'controllers/editMovie.php',
     '/usun'             => 'controllers/deleteMovie.php',
 

@@ -11,25 +11,23 @@ function getMovie($db, $id)
 
 function fetchMovies($db, $category)
 {
-    return $db->executeSelectQuery("SELECT * FROM filmy WHERE kategoria = ?;", [$category]);
+    return $db->executeSelectQuery("SELECT id, tytul, rok_produkcji FROM filmy WHERE kategoria = ?;", [$category]);
 }
 
 function addMovieIfRequired($db)
 {
     if (isset($_POST['addMovie'])) {
-        $target_image_dir = base_path("img/covers/");
+        $target_image_dir = base_path("public/img/covers/");
 
-        // Ensure the directory exists
         if (!is_dir($target_image_dir)) {
             mkdir($target_image_dir, 0777, true);
         }
 
         $target_cover_file = $target_image_dir . basename($_FILES["sciezka_do_okladki"]["name"]);
         if (!move_uploaded_file($_FILES["sciezka_do_okladki"]["tmp_name"], $target_cover_file)) {
-            abort(400); // Błąd przesyłania pliku
+            abort(400);
         }
 
-        // Debugging
         if (!file_exists($target_cover_file)) {
             dd("File not uploaded: " . $target_cover_file);
         }

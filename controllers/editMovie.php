@@ -6,7 +6,6 @@ if (!$_SESSION['isAdmin']) {
 
 if (isset($_POST['editMovie'])) {
     $db->updateMovie($_POST);
-    header('Location: /szczegoly?id=' . $_POST['id']);
     exit();
 }
 

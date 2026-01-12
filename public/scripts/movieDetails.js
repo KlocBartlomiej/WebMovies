@@ -1,17 +1,13 @@
 function closeDrawer() {
-  document.getElementById("movieDetailsDrawer").classList.remove("open");
-  document.getElementById("drawerMovieContent").innerHTML = "";
+    document.getElementById("movieDetailsDrawer").classList.remove("open");
+    document.getElementById("drawerMovieContent").innerHTML = "";
 }
 
-function addEventListenerForDetails(movieDiv, movie) {
-  movieDiv.addEventListener("click", function () {
-    openDrawer(movie);
-  });
-}
+function returnDrawerMovieContent(data) {
+    const movie = data.movie || {};
+    const comments = data.comments || [];
 
-function openDrawer(movie) {
-  document.getElementById("movieDetailsDrawer").classList.add("open");
-  document.getElementById("drawerMovieContent").innerHTML = `
+    return `
     <div class="movie" width=100% height=100%>
     <div style="float: left; width: 20%;">
         <img src="img/covers/<?= basename($movie['sciezka_do_okladki']) ?>" alt="Okładka filmu">
