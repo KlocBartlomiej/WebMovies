@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['log-in']) && !isLoginAttemptSuccessfull($db, $_POST['login'], $_POST['password'], $_POST['nick'])) {
+if (isset($_POST['log-in']) && !isLoginAttemptSuccessfull($db, $_POST['login'], $_POST['password'])) {
     view('login.view.php');
 } else if (!isset($_SESSION['isAdmin'])) {
     view('login.view.php');

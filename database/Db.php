@@ -115,7 +115,7 @@ class Db{
             VALUES (:id_filmu, :nazwa_uzytkownika, :komentarz, :data_dodania)';
         $data = [
             "id_filmu" => $post['id_filmu'],
-            "nazwa_uzytkownika" => $post['nick'],
+            "nazwa_uzytkownika" => $post['login'],
             "komentarz" => $post['comment'],
             "data_dodania" => date('Y-m-d H:i:s'),
         ];

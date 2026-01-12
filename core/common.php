@@ -31,7 +31,7 @@ function abort($code = 404)
     die();
 }
 
-function isLoginAttemptSuccessfull($db, $login, $password, $nick)
+function isLoginAttemptSuccessfull($db, $login, $password)
 {
     $user = $db->executeSelectQuery("SELECT * FROM uzytkownicy WHERE login = ? AND haslo = ?;", [$login, $password]);
 
@@ -41,6 +41,6 @@ function isLoginAttemptSuccessfull($db, $login, $password, $nick)
 
     $user = $user[0];
     $_SESSION['isAdmin'] = $user['id'] === 1;
-    $_SESSION['nick'] = $nick;
+    $_SESSION['login'] = $login;
     return true;
 }

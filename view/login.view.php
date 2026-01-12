@@ -17,11 +17,6 @@ view('partials/header.view.php', [ 'title' => $title ]);
         <input type="password" id="password" name="password" placeholder="haslo" required>
         <br><br>
 
-        <label for="nick">Proszę podać nick:<br>(Będzie on widoczny przy Twoich komentarzach)</label>
-        <br>
-        <input type="text" id="nick" name="nick" placeholder="nick" required>
-        <br><br><br>
-
         <input type="submit" name="log-in" value="Zaloguj">
 
         <br><br>

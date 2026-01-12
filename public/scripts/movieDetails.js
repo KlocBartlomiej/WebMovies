@@ -34,7 +34,7 @@ function openDrawer(movie) {
     <br>
     <form method="post">
         <input hidden name="id_filmu" value="<?= $movie['id'] ?>">
-        <input hidden name="nick" value="<?= $_SESSION['nick'] ?>">
+        <input hidden name="login" value="<?= $_SESSION['login'] ?>">
 
         <h4>Dodaj swój komentarz:</h4>
         <input type="text" name="comment" placeholder="Dodaj komentarz">
